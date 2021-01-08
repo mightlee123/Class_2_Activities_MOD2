@@ -118,7 +118,11 @@ def make_withdrawal(account):
     # @TODO: Validates if withdrawal amount is less than or equal to account balance, processes withdrawal and returns account.
     # Else system exits with error messages indicating that the account is short of funds.
     if withdrawal_ammount <= account["balance"]:
-        
+        account["balance"] = account["balance"] - withdrawal_ammount
+        return account
+    else:
+        sys.exit(f"There are insufficent funds.")
+
 
 
 def run():
