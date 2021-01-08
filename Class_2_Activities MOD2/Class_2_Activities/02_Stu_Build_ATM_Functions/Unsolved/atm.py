@@ -33,6 +33,12 @@ def load_accounts():
 
 def validate_pin(pin):
     """Verifies that PIN is 6 digits long."""
+    if len(pin)==6:
+        print("The pin you have entered is correct.")
+        return True
+    else:
+        Print("The pin you have entered is incorrect.")
+        return False
 
     # @TODO: Verifies length of pin is 6 digits prints validations message and return True. Else returns False.
 
@@ -102,11 +108,17 @@ def make_withdrawal(account):
     """Withdrawal Dialog."""
 
     # @TODO:  Use questionary to capture the withdrawal and set it equal to amount variable. Be sure that amount is a floating point number.
+    withdrawal_ammount= questionary.text("How much would you like to withdrawal?").ask()
+    withdrawal_ammount= float(withdrawal_ammount)
 
     # @TODO:  Validates amount of withdrawal. If less than or equal to 0 system exits with error message.
+    if withdrawal_ammount <= 0.0:
+        sys.exit(f"The withdrawal amount is less than $0.")
 
     # @TODO: Validates if withdrawal amount is less than or equal to account balance, processes withdrawal and returns account.
     # Else system exits with error messages indicating that the account is short of funds.
+    if withdrawal_ammount <= account["balance"]:
+        
 
 
 def run():
